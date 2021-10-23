@@ -1,0 +1,80 @@
+syntax = "proto3";
+
+package clutch.aws.ecs.v1;
+
+option go_package = "github.com/lyft/clutch/backend/api/aws/ecs/v1;ecsv1";
+
+import "google/api/annotations.proto";
+
+import "validate/validate.proto";
+import "api/v1/annotations.proto";
+
+service EcsAPI {
+  rpc GetECSClusters(GetEcsRequest) returns (GetEcsResponse) {
+    option (google.api.http) = {
+      post : "/v1/aws/ecs/getClusters"
+      body : "*"
+    };
+    option (clutch.api.v1.action).type = READ;
+  }
+
+  rpc GetECSClusterServices(GetEcsSrvRequest) returns (GetEcsSrvResponse) {
+    option (google.api.http) = {
+      post : "/v1/aws/ecs/getClusterSrvs"
+      body : "*"
+    };
+    option (clutch.api.v1.action).type = READ;
+  }
+
+  rpc GetECSClusterSrvTaskDef(GetEcsSrvTaskRequest) returns (GetEcsSrvTaskResponse) {
+    option (google.api.http) = {
+      post : "/v1/aws/ecs/getClusterSrvTaskDef"
+      body : "*"
+    };
+    option (clutch.api.v1.action).type = READ;
+  }
+}
+
+message GetEcsRequest {
+  string region = 1;
+}
+
+message GetEcsResponse {
+  repeated string cluster = 1;
+}
+
+message GetEcsSrvRequest {
+  option (clutch.api.v1.id).patterns = {
+    type_url : "clutch.aws.ec2.v1.EcsCluster",
+    pattern : "{region}/{ecs_cluster}"
+  };
+  string ecs_cluster = 1 [ (validate.rules).string = {min_bytes : 1} ];
+  string region = 2 [ (validate.rules).string = {min_bytes : 1} ];
+}
+
+message GetEcsSrvResponse {
+  repeated string service = 1;
+}
+
+message GetEcsSrvTaskRequest {
+  option (clutch.api.v1.id).patterns = {
+    type_url : "clutch.aws.ec2.v1.EcsCluster",
+    pattern : "{region}/{ecs_cluster}/{ecs_clusterservice}"
+  };
+  string ecs_clusterservice = 1 [ (validate.rules).string = {min_bytes : 1} ];
+  string ecs_cluster = 2 [ (validate.rules).string = {min_bytes : 1} ];
+  string region = 3 [ (validate.rules).string = {min_bytes : 1} ];
+}
+
+message GetEcsSrvTaskResponse {
+  //repeated TaskDefEnvs envar = 1;
+  map<string, string> env = 1;
+}
+
+//message TaskDefEnvs {
+//  map<string, string> env = 1;
+//}
+
+//LINUX_RELEASE_SUM=f888c30699f517c48a70fe618b1202e99c3f1ca2510ab0bc6d2e626e5b33ba83
+//ARCH=arm64
+
