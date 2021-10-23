@@ -18,6 +18,7 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
 	"github.com/aws/aws-sdk-go-v2/service/ec2"
 	ec2types "github.com/aws/aws-sdk-go-v2/service/ec2/types"
+	"github.com/aws/aws-sdk-go-v2/service/ecs"
 	"github.com/aws/aws-sdk-go-v2/service/kinesis"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
 	"github.com/aws/aws-sdk-go-v2/service/sts"
@@ -31,6 +32,7 @@ import (
 
 	dynamodbv1 "github.com/lyft/clutch/backend/api/aws/dynamodb/v1"
 	ec2v1 "github.com/lyft/clutch/backend/api/aws/ec2/v1"
+	ecsv1 "github.com/lyft/clutch/backend/api/aws/ecs/v1"
 	kinesisv1 "github.com/lyft/clutch/backend/api/aws/kinesis/v1"
 	awsv1 "github.com/lyft/clutch/backend/api/config/service/aws/v1"
 	topologyv1 "github.com/lyft/clutch/backend/api/topology/v1"
@@ -97,6 +99,7 @@ func New(cfg *anypb.Any, logger *zap.Logger, scope tally.Scope) (service.Service
 			autoscaling: autoscaling.NewFromConfig(regionCfg),
 			dynamodb:    dynamodb.NewFromConfig(regionCfg),
 			sts:         sts.NewFromConfig(regionCfg),
+			ecs:         ecs.NewFromConfig(regionCfg),
 		}
 	}
 
@@ -122,6 +125,10 @@ type Client interface {
 
 	GetCallerIdentity(ctx context.Context, region string) (*sts.GetCallerIdentityOutput, error)
 
+	ListECSClusters(ctx context.Context, region string) (*ecsv1.GetEcsResponse, error)
+	ListECSServices(ctx context.Context, ecs_cluster string, region string) (*ecsv1.GetEcsSrvResponse, error)
+	DescribeTaskDefs(ctx context.Context, ecs_clusterservice string, ecs_cluster string, region string) (*ecsv1.GetEcsSrvTaskResponse, error)
+
 	Regions() []string
 }
 
@@ -144,6 +151,7 @@ type regionalClient struct {
 	autoscaling autoscalingClient
 	dynamodb    dynamodbClient
 	sts         stsClient
+	ecs         ecsClient
 }
 
 // Implement the interface provided by errorintercept, so errors are caught at middleware and converted to gRPC status.
