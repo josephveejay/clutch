@@ -3076,6 +3076,398 @@ export namespace clutch {
             }
         }
 
+        /** Namespace ecs. */
+        namespace ecs {
+
+            /** Namespace v1. */
+            namespace v1 {
+
+                /** Represents an EcsAPI */
+                class EcsAPI extends $protobuf.rpc.Service {
+
+                    /**
+                     * Constructs a new EcsAPI service.
+                     * @param rpcImpl RPC implementation
+                     * @param [requestDelimited=false] Whether requests are length-delimited
+                     * @param [responseDelimited=false] Whether responses are length-delimited
+                     */
+                    constructor(rpcImpl: $protobuf.RPCImpl, requestDelimited?: boolean, responseDelimited?: boolean);
+
+                    /**
+                     * Calls GetECSClusters.
+                     * @param request GetEcsRequest message or plain object
+                     * @param callback Node-style callback called with the error, if any, and GetEcsResponse
+                     */
+                    public getECSClusters(request: clutch.aws.ecs.v1.IGetEcsRequest, callback: clutch.aws.ecs.v1.EcsAPI.GetECSClustersCallback): void;
+
+                    /**
+                     * Calls GetECSClusters.
+                     * @param request GetEcsRequest message or plain object
+                     * @returns Promise
+                     */
+                    public getECSClusters(request: clutch.aws.ecs.v1.IGetEcsRequest): Promise<clutch.aws.ecs.v1.GetEcsResponse>;
+
+                    /**
+                     * Calls GetECSClusterServices.
+                     * @param request GetEcsSrvRequest message or plain object
+                     * @param callback Node-style callback called with the error, if any, and GetEcsSrvResponse
+                     */
+                    public getECSClusterServices(request: clutch.aws.ecs.v1.IGetEcsSrvRequest, callback: clutch.aws.ecs.v1.EcsAPI.GetECSClusterServicesCallback): void;
+
+                    /**
+                     * Calls GetECSClusterServices.
+                     * @param request GetEcsSrvRequest message or plain object
+                     * @returns Promise
+                     */
+                    public getECSClusterServices(request: clutch.aws.ecs.v1.IGetEcsSrvRequest): Promise<clutch.aws.ecs.v1.GetEcsSrvResponse>;
+
+                    /**
+                     * Calls GetECSClusterSrvTaskDef.
+                     * @param request GetEcsSrvTaskRequest message or plain object
+                     * @param callback Node-style callback called with the error, if any, and GetEcsSrvTaskResponse
+                     */
+                    public getECSClusterSrvTaskDef(request: clutch.aws.ecs.v1.IGetEcsSrvTaskRequest, callback: clutch.aws.ecs.v1.EcsAPI.GetECSClusterSrvTaskDefCallback): void;
+
+                    /**
+                     * Calls GetECSClusterSrvTaskDef.
+                     * @param request GetEcsSrvTaskRequest message or plain object
+                     * @returns Promise
+                     */
+                    public getECSClusterSrvTaskDef(request: clutch.aws.ecs.v1.IGetEcsSrvTaskRequest): Promise<clutch.aws.ecs.v1.GetEcsSrvTaskResponse>;
+                }
+
+                namespace EcsAPI {
+
+                    /**
+                     * Callback as used by {@link clutch.aws.ecs.v1.EcsAPI#getECSClusters}.
+                     * @param error Error, if any
+                     * @param [response] GetEcsResponse
+                     */
+                    type GetECSClustersCallback = (error: (Error|null), response?: clutch.aws.ecs.v1.GetEcsResponse) => void;
+
+                    /**
+                     * Callback as used by {@link clutch.aws.ecs.v1.EcsAPI#getECSClusterServices}.
+                     * @param error Error, if any
+                     * @param [response] GetEcsSrvResponse
+                     */
+                    type GetECSClusterServicesCallback = (error: (Error|null), response?: clutch.aws.ecs.v1.GetEcsSrvResponse) => void;
+
+                    /**
+                     * Callback as used by {@link clutch.aws.ecs.v1.EcsAPI#getECSClusterSrvTaskDef}.
+                     * @param error Error, if any
+                     * @param [response] GetEcsSrvTaskResponse
+                     */
+                    type GetECSClusterSrvTaskDefCallback = (error: (Error|null), response?: clutch.aws.ecs.v1.GetEcsSrvTaskResponse) => void;
+                }
+
+                /** Properties of a GetEcsRequest. */
+                interface IGetEcsRequest {
+
+                    /** GetEcsRequest region */
+                    region?: (string|null);
+                }
+
+                /** Represents a GetEcsRequest. */
+                class GetEcsRequest implements IGetEcsRequest {
+
+                    /**
+                     * Constructs a new GetEcsRequest.
+                     * @param [properties] Properties to set
+                     */
+                    constructor(properties?: clutch.aws.ecs.v1.IGetEcsRequest);
+
+                    /** GetEcsRequest region. */
+                    public region: string;
+
+                    /**
+                     * Verifies a GetEcsRequest message.
+                     * @param message Plain object to verify
+                     * @returns `null` if valid, otherwise the reason why it is not
+                     */
+                    public static verify(message: { [k: string]: any }): (string|null);
+
+                    /**
+                     * Creates a GetEcsRequest message from a plain object. Also converts values to their respective internal types.
+                     * @param object Plain object
+                     * @returns GetEcsRequest
+                     */
+                    public static fromObject(object: { [k: string]: any }): clutch.aws.ecs.v1.GetEcsRequest;
+
+                    /**
+                     * Creates a plain object from a GetEcsRequest message. Also converts values to other types if specified.
+                     * @param message GetEcsRequest
+                     * @param [options] Conversion options
+                     * @returns Plain object
+                     */
+                    public static toObject(message: clutch.aws.ecs.v1.GetEcsRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                    /**
+                     * Converts this GetEcsRequest to JSON.
+                     * @returns JSON object
+                     */
+                    public toJSON(): { [k: string]: any };
+                }
+
+                /** Properties of a GetEcsResponse. */
+                interface IGetEcsResponse {
+
+                    /** GetEcsResponse cluster */
+                    cluster?: (string[]|null);
+                }
+
+                /** Represents a GetEcsResponse. */
+                class GetEcsResponse implements IGetEcsResponse {
+
+                    /**
+                     * Constructs a new GetEcsResponse.
+                     * @param [properties] Properties to set
+                     */
+                    constructor(properties?: clutch.aws.ecs.v1.IGetEcsResponse);
+
+                    /** GetEcsResponse cluster. */
+                    public cluster: string[];
+
+                    /**
+                     * Verifies a GetEcsResponse message.
+                     * @param message Plain object to verify
+                     * @returns `null` if valid, otherwise the reason why it is not
+                     */
+                    public static verify(message: { [k: string]: any }): (string|null);
+
+                    /**
+                     * Creates a GetEcsResponse message from a plain object. Also converts values to their respective internal types.
+                     * @param object Plain object
+                     * @returns GetEcsResponse
+                     */
+                    public static fromObject(object: { [k: string]: any }): clutch.aws.ecs.v1.GetEcsResponse;
+
+                    /**
+                     * Creates a plain object from a GetEcsResponse message. Also converts values to other types if specified.
+                     * @param message GetEcsResponse
+                     * @param [options] Conversion options
+                     * @returns Plain object
+                     */
+                    public static toObject(message: clutch.aws.ecs.v1.GetEcsResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                    /**
+                     * Converts this GetEcsResponse to JSON.
+                     * @returns JSON object
+                     */
+                    public toJSON(): { [k: string]: any };
+                }
+
+                /** Properties of a GetEcsSrvRequest. */
+                interface IGetEcsSrvRequest {
+
+                    /** GetEcsSrvRequest ecsCluster */
+                    ecsCluster?: (string|null);
+
+                    /** GetEcsSrvRequest region */
+                    region?: (string|null);
+                }
+
+                /** Represents a GetEcsSrvRequest. */
+                class GetEcsSrvRequest implements IGetEcsSrvRequest {
+
+                    /**
+                     * Constructs a new GetEcsSrvRequest.
+                     * @param [properties] Properties to set
+                     */
+                    constructor(properties?: clutch.aws.ecs.v1.IGetEcsSrvRequest);
+
+                    /** GetEcsSrvRequest ecsCluster. */
+                    public ecsCluster: string;
+
+                    /** GetEcsSrvRequest region. */
+                    public region: string;
+
+                    /**
+                     * Verifies a GetEcsSrvRequest message.
+                     * @param message Plain object to verify
+                     * @returns `null` if valid, otherwise the reason why it is not
+                     */
+                    public static verify(message: { [k: string]: any }): (string|null);
+
+                    /**
+                     * Creates a GetEcsSrvRequest message from a plain object. Also converts values to their respective internal types.
+                     * @param object Plain object
+                     * @returns GetEcsSrvRequest
+                     */
+                    public static fromObject(object: { [k: string]: any }): clutch.aws.ecs.v1.GetEcsSrvRequest;
+
+                    /**
+                     * Creates a plain object from a GetEcsSrvRequest message. Also converts values to other types if specified.
+                     * @param message GetEcsSrvRequest
+                     * @param [options] Conversion options
+                     * @returns Plain object
+                     */
+                    public static toObject(message: clutch.aws.ecs.v1.GetEcsSrvRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                    /**
+                     * Converts this GetEcsSrvRequest to JSON.
+                     * @returns JSON object
+                     */
+                    public toJSON(): { [k: string]: any };
+                }
+
+                /** Properties of a GetEcsSrvResponse. */
+                interface IGetEcsSrvResponse {
+
+                    /** GetEcsSrvResponse service */
+                    service?: (string[]|null);
+                }
+
+                /** Represents a GetEcsSrvResponse. */
+                class GetEcsSrvResponse implements IGetEcsSrvResponse {
+
+                    /**
+                     * Constructs a new GetEcsSrvResponse.
+                     * @param [properties] Properties to set
+                     */
+                    constructor(properties?: clutch.aws.ecs.v1.IGetEcsSrvResponse);
+
+                    /** GetEcsSrvResponse service. */
+                    public service: string[];
+
+                    /**
+                     * Verifies a GetEcsSrvResponse message.
+                     * @param message Plain object to verify
+                     * @returns `null` if valid, otherwise the reason why it is not
+                     */
+                    public static verify(message: { [k: string]: any }): (string|null);
+
+                    /**
+                     * Creates a GetEcsSrvResponse message from a plain object. Also converts values to their respective internal types.
+                     * @param object Plain object
+                     * @returns GetEcsSrvResponse
+                     */
+                    public static fromObject(object: { [k: string]: any }): clutch.aws.ecs.v1.GetEcsSrvResponse;
+
+                    /**
+                     * Creates a plain object from a GetEcsSrvResponse message. Also converts values to other types if specified.
+                     * @param message GetEcsSrvResponse
+                     * @param [options] Conversion options
+                     * @returns Plain object
+                     */
+                    public static toObject(message: clutch.aws.ecs.v1.GetEcsSrvResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                    /**
+                     * Converts this GetEcsSrvResponse to JSON.
+                     * @returns JSON object
+                     */
+                    public toJSON(): { [k: string]: any };
+                }
+
+                /** Properties of a GetEcsSrvTaskRequest. */
+                interface IGetEcsSrvTaskRequest {
+
+                    /** GetEcsSrvTaskRequest ecsClusterservice */
+                    ecsClusterservice?: (string|null);
+
+                    /** GetEcsSrvTaskRequest ecsCluster */
+                    ecsCluster?: (string|null);
+
+                    /** GetEcsSrvTaskRequest region */
+                    region?: (string|null);
+                }
+
+                /** Represents a GetEcsSrvTaskRequest. */
+                class GetEcsSrvTaskRequest implements IGetEcsSrvTaskRequest {
+
+                    /**
+                     * Constructs a new GetEcsSrvTaskRequest.
+                     * @param [properties] Properties to set
+                     */
+                    constructor(properties?: clutch.aws.ecs.v1.IGetEcsSrvTaskRequest);
+
+                    /** GetEcsSrvTaskRequest ecsClusterservice. */
+                    public ecsClusterservice: string;
+
+                    /** GetEcsSrvTaskRequest ecsCluster. */
+                    public ecsCluster: string;
+
+                    /** GetEcsSrvTaskRequest region. */
+                    public region: string;
+
+                    /**
+                     * Verifies a GetEcsSrvTaskRequest message.
+                     * @param message Plain object to verify
+                     * @returns `null` if valid, otherwise the reason why it is not
+                     */
+                    public static verify(message: { [k: string]: any }): (string|null);
+
+                    /**
+                     * Creates a GetEcsSrvTaskRequest message from a plain object. Also converts values to their respective internal types.
+                     * @param object Plain object
+                     * @returns GetEcsSrvTaskRequest
+                     */
+                    public static fromObject(object: { [k: string]: any }): clutch.aws.ecs.v1.GetEcsSrvTaskRequest;
+
+                    /**
+                     * Creates a plain object from a GetEcsSrvTaskRequest message. Also converts values to other types if specified.
+                     * @param message GetEcsSrvTaskRequest
+                     * @param [options] Conversion options
+                     * @returns Plain object
+                     */
+                    public static toObject(message: clutch.aws.ecs.v1.GetEcsSrvTaskRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                    /**
+                     * Converts this GetEcsSrvTaskRequest to JSON.
+                     * @returns JSON object
+                     */
+                    public toJSON(): { [k: string]: any };
+                }
+
+                /** Properties of a GetEcsSrvTaskResponse. */
+                interface IGetEcsSrvTaskResponse {
+
+                    /** GetEcsSrvTaskResponse env */
+                    env?: ({ [k: string]: string }|null);
+                }
+
+                /** Represents a GetEcsSrvTaskResponse. */
+                class GetEcsSrvTaskResponse implements IGetEcsSrvTaskResponse {
+
+                    /**
+                     * Constructs a new GetEcsSrvTaskResponse.
+                     * @param [properties] Properties to set
+                     */
+                    constructor(properties?: clutch.aws.ecs.v1.IGetEcsSrvTaskResponse);
+
+                    /** GetEcsSrvTaskResponse env. */
+                    public env: { [k: string]: string };
+
+                    /**
+                     * Verifies a GetEcsSrvTaskResponse message.
+                     * @param message Plain object to verify
+                     * @returns `null` if valid, otherwise the reason why it is not
+                     */
+                    public static verify(message: { [k: string]: any }): (string|null);
+
+                    /**
+                     * Creates a GetEcsSrvTaskResponse message from a plain object. Also converts values to their respective internal types.
+                     * @param object Plain object
+                     * @returns GetEcsSrvTaskResponse
+                     */
+                    public static fromObject(object: { [k: string]: any }): clutch.aws.ecs.v1.GetEcsSrvTaskResponse;
+
+                    /**
+                     * Creates a plain object from a GetEcsSrvTaskResponse message. Also converts values to other types if specified.
+                     * @param message GetEcsSrvTaskResponse
+                     * @param [options] Conversion options
+                     * @returns Plain object
+                     */
+                    public static toObject(message: clutch.aws.ecs.v1.GetEcsSrvTaskResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                    /**
+                     * Converts this GetEcsSrvTaskResponse to JSON.
+                     * @returns JSON object
+                     */
+                    public toJSON(): { [k: string]: any };
+                }
+            }
+        }
+
         /** Namespace kinesis. */
         namespace kinesis {
 
